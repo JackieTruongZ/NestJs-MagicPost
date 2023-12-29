@@ -51,6 +51,19 @@ export class OrderController {
     return confirm;
   }
 
+  @Post('find-order-moving-trans-hub')
+  async findAllOrderMovingTransOrHub(
+    @GetUser() user: User,
+    @Body() dto: OrderFindDto,
+  ) {
+    const order =
+      await this.orderService.findAllOrderMovingTransOrHub(
+        user,
+        dto.pointId,
+      );
+    return order;
+  }
+
   @Post('confirm-order-on-hub')
   async confirmOrderOnHub(
     @GetUser('id') userId: number,
